@@ -1,0 +1,71 @@
+﻿@model SCP_Foundation.Models.SCP
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center" id="testE" style="background-color:rgba(120,130,150,.5); color:whitesmoke;
+           text-shadow:black 3px 3px; border:grey 1px ridge;">
+    @Html.DisplayFor(model => model.IdNumber)  Details
+</h1>
+
+<body id="MetalBG">
+    <div style="color:black; background-color:rgba(255,255,255, .9); border:white 3px groove; border-radius:5px; box-shadow:8px 8px 6px rgba(0,0,0, .5); padding:5px; margin-bottom:5%;">
+        <h4 id="testD" class="text-center pt-3">@Html.DisplayFor(model => model.Name)</h4>
+
+        <hr style="background-color:black;" />
+
+        <dl id="test" class="row pl-3 pr-3" style="margin-bottom:0%;">
+            <div class ="row col-sm-8">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Contain.ContainId)
+                </dt>
+                <dd class="col-sm-8" style="border-left:solid 1px black; margin-left:-7%; background-image: linear-gradient(to right, rgba(255,200,200,1), rgba(255,200,200,0));">
+                    @Html.DisplayFor(model => model.Contain.Cclass)
+                </dd>
+                    <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Risk.RiskId)
+                </dt>
+                <dd class="col-sm-8" style="border-left:solid 1px black; margin-left:-7%; background-image: linear-gradient(to right, rgba(164,211,255,1), rgba(164,211,255,0));">
+                    @Html.DisplayFor(model => model.Risk.Rclass)
+                </dd>
+                    <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Disruption.DisruptionId)
+                </dt>
+                <dd class="col-sm-8" style="border-left:solid 1px black; margin-left:-7%; background-image: linear-gradient(to right, rgba(230,255,164,1), rgba(164,211,255,0));">
+                    @Html.DisplayFor(model => model.Disruption.Dclass)
+                </dd>
+            </div>
+            <div id="testC" class="col-sm-4 text-center pt-3" style="border:dashed 4px black; color:whitesmoke; background-color:rgba(140,0,1, .9);">
+                <dt class="col-sm-12" style="font-size:20px; letter-spacing:3px;">
+                    @Html.DisplayNameFor(model => model.Classified.ClassifiedId)
+                </dt>
+                <dd class="col-sm-12" style="margin-left:0%; font-size:15px; letter-spacing:1px;">
+                    @Html.DisplayFor(model => model.Classified.ClassificationLevel)
+                </dd>
+            </div>
+        </dl>
+
+        <hr style="background-color:black;" />
+
+        <dl id="test" class="list-group-horizontal pl-1 pr-1">
+            <dt class="col-sm-12">
+                @Html.DisplayNameFor(model => model.ContainmentProcedure)
+            </dt>
+            <dd class="col-sm-12 mb-4 pt-2 pb-1" style="background-color:whitesmoke; border:1px solid black; border-radius:5px;">
+                @Html.DisplayFor(model => model.ContainmentProcedure)
+            </dd>
+            <dt class="col-sm-12">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-12 pt-2 pb-1" style="background-color:whitesmoke; border:1px solid black; border-radius:5px;">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+        </dl>
+        <div style="padding-left:18px;">
+            <a asp-action="Edit" asp-route-id="@Model.SCPID">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SCP_Foundation.Models.SCP>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 id="testE" style="background-color:rgba(120,130,150,.5); color:whitesmoke; text-shadow:black 3px 3px; border:grey 1px ridge;" class="text-center">SCP Database</h1>
+<hr style="background-color:white;" />
+<div class="row ml-0 mb-3">
+
+    <a asp-action="Create" class="btn btn-light btn-outline-success text-dark border-dark" id="test">File New Report</a>
+
+    <form asp-action="Index" method="get">
+        <div class="form-actions" style="margin-left:250px;">
+                <input type="text" name="SearchString" value="@ViewData["currentFilter"]"/>
+            <input type="submit" value="Search" class="btn btn-light btn-outline-info text-dark border-dark" id="test" />
+            <a asp-action="Index" class="btn btn-light btn-outline-info text-dark  border-dark" id="test">Refresh List</a>
+        </div>
+    </form>
+
+</div>
+<body id="MetalBG2">
+    <div style="background-color: rgba(255,255,255, .95); border:white 3px groove; border-radius:5px; box-shadow:8px 8px 6px rgba(0,0,0, .5); margin-bottom:5%;">
+        <table class="table table-bordered table-hover text-center" style="margin-bottom:0px;" id="test">
+            <thead style="background-color:lightcyan;">
+                <tr>
+                    <th class="border-1 border-dark">
+                       
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["IdNumberSort"]">ID Number</a>
+                    </th>
+                    <th class="border-1 border-dark">
+                        
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSort"]">Name</a>
+                    </th>
+                    <th class="border-1 border-dark">
+
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["RclassSort"]">Risk Class</a>
+                    </th>
+                    <th class="border-1 border-dark">
+
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["CclassSort"]">Containment Class</a>
+                    </th>
+                    <th class="border-1 border-dark">
+
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["DclassSort"]">Disruption Class</a>
+                    </th>
+                    <th class="border-1 border-dark">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class=" border-dark">
+                            @Html.DisplayFor(modelItem => item.IdNumber)
+                        </td>
+                        <td class="w-25 border-dark">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="border-dark">
+                            @Html.DisplayFor(modelItem => item.Risk.Rclass)
+                        </td>
+                        <td class="border-dark">
+                            @Html.DisplayFor(modelItem => item.Contain.Cclass)
+                        </td>
+                        <td class="border-dark">
+                            @Html.DisplayFor(modelItem => item.Disruption.Dclass)
+                        </td>
+
+                        <td class=" border-dark">
+                            <a asp-action="Edit" asp-route-id="@item.SCPID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SCPID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SCPID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
